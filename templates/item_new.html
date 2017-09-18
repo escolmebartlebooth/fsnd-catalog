@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'navigation.html' %}
+    <form class="row" method="POST">
+        <input type="hidden" value="{{ STATE }}" name="state" />
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <label class="col-2 inputtitle">Item:</label>
+                    <input class="col-10" type="text" name="name" placeholder="Add item name">
+                </div>
+                <div class="row">
+                    <label class="col-2 inputitle">Description:</label>
+                    <input class="col-10" type="text" name="description" placeholder="add item description">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-1 inputitle">Category:</label>
+            <select name="category" class="col-2">
+                {% for category in categories %}
+                    <option value="{{category.id}}">{{category.name}}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row">
+            <input class="col-2" type="submit" name="newitem" value="Create!">
+            <a class="col-2 actionlink" href="{{ url_for('listCategories') }}">Cancel</a>
+        </div>
+        <div class="row">
+            <label class="col-4 message">{{error}}</label>
+        </div>
+    </form>
+{% endblock %}

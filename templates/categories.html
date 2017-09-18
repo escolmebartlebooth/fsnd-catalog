@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'navigation.html' %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="row">
+                {% for message in messages %}
+                    <label class="col-12 message">{{ message }}</label>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class='items'>
+            <div class="row">
+                <h2 class="col-12 headline">Items</h2>
+            </div>
+            {% if logged_in %}
+            <div class="row">
+                <a class="col-12 actionlink" href="{{ url_for('itemNew') }}">New Item</a>
+                <hr>
+            </div>
+            {% endif %}
+            {% for item in items %}
+            <div class="row">
+                <a class="col-11 itemtitle" href="{{ url_for('itemView', item_id=item.id) }}">{{item.name}}</a>
+                <label class="col-12 itemsubtitle">Updated on: {{item.updated | fdate}}; In category: {{item.category.name}}</label>
+                <hr>
+            </div>
+            {% endfor %}
+        </div>
+        <div class='categories'>
+            <div class="row">
+                <h2 class="col-12 headline">Categories</h2>
+            </div>
+            {% if logged_in %}
+            <div class="row">
+                <a class="col-12 actionlink" href="{{ url_for('categoryNew') }}">New Category</a>
+                <hr>
+            </div>
+            {% endif %}
+            {% for category in categories %}
+            <div class="row catstyle">
+                <a class="col-12 cattitle" href="{{ url_for('categoryView', category_id=category.id) }}">{{category.name}}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'navigation.html' %}
+    <div class="row">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <label class="col-12 itemtitle" name="name">Item: {{item.name}}</label>
+                </div>
+                <div class="row">
+                    <label class="col-12 itemdescription" name="author">Description: {{item.description}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-3 itemsubtitle" name="author">Created by: {{item.user.email}}</label>
+        </div>
+        <div class="row">
+            <label class="col-6 itemsubtitle" name="created">Created on: {{item.created | fdate}}</label>
+        </div>
+        <div class="row">
+            <label class="col-6 itemsubtitle" name="updated">Updated on: {{item.updated | fdate}}</label>
+        </div>
+        <div class="row">
+            <label class="col-3 itemsubtitle" name="author">In category: {{item.category.name}}</label>
+        </div>
+        <div class="row">
+            {% if owns_item %}
+                <a class="col-3 actionlink" href="{{ url_for('itemEdit', item_id = item.id) }}">Edit Item</a>
+                <a class="col-3 actionlink" href="{{ url_for('itemDelete', item_id = item.id) }}">Delete Item</a>
+            {% endif %}
+            <a class="col-4 actionlink" href="{{ url_for('listCategories') }}">Back to categories</a>
+        </div>
+    </div>
+{% endblock %}

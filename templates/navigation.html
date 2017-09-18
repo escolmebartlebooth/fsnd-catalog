@@ -1,0 +1,16 @@
+{% block navigation %}
+    <div class="row navbar">
+        <h1 class="col-10">Item Catalog</h1>
+        <div class="col-2">
+            {% if logged_in %}
+                <form method="GET" action="/logout">
+                    <input class="navbutton" type="submit" value="LOGOUT">
+                </form>
+            {% else %}
+                <form method="GET" action="/login">
+                    <input class="navbutton" type="submit" value="LOGIN">
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

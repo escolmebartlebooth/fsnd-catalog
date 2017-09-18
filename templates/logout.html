@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+</head>
+<body>
+<div id="amazon-root"></div>
+<script type="text/javascript">
+
+  window.onAmazonLoginReady = function() {
+    amazon.Login.setClientId('amzn1.application-oa2-client.bef1aacdeede4489b52a5d93539386b3');
+  };
+  (function(d) {
+    var a = d.createElement('script'); a.type = 'text/javascript';
+    a.async = true; a.id = 'amazon-login-sdk';
+    a.src = 'https://api-cdn.amazon.com/sdk/login1.js';
+    d.getElementById('amazon-root').appendChild(a);
+  })(document);
+
+</script>
+
+<div class="container">
+  <div class="row">
+    <h1>Logout</h1>
+  </div>
+  <div class="row">
+    <div class="loginbox" id="signInButton">
+      <div class="row">
+        <div class="col-12">
+          <a href="#" id="LoginWithAmazon">
+          <img border="0" alt="Logout with Amazon"
+          src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png"
+          width="156" height="32" />
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-12 itemtitle">You want to logout?</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="result"></div>
+
+<script type="text/javascript">
+   document.getElementById('LoginWithAmazon').onclick = function() {
+    amazon.Login.logout();
+    window.location = '{{url_for("listCategories")}}'
+    return false;
+  };
+
+</script>
+
+</body>
+</html>
+</html>

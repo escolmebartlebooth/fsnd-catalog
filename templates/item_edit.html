@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'navigation.html' %}
+    <form class="row" method="POST">
+        <input type="hidden" value="{{ STATE }}" name="state" />
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <label class="col-2 inputtitle">Item:</label>
+                    <input class="col-10" type="text" name="name" value="{{item.name}}">
+                </div>
+                <div class="row">
+                    <label class="col-2 inputitle">Description:</label>
+                    <input class="col-10" type="text" name="description" value="{{item.description}}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-1 inputtitle">Category:</label>
+            <select name="category" class="col-2">
+                {% for category in categories %}
+                    {% if category.id == item.category.id %}
+                        <option value="{{category.id}}" selected>{{category.name}}
+                    {% else %}
+                        <option value="{{category.id}}">{{category.name}}
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row">
+            <input class="col-2" type="submit" name="edititem" value="Update!">
+            <a class="col-2 actionlink" href="{{ url_for('listCategories') }}">Cancel</a>
+        </div>
+        <div class="row">
+            <label class="col-4 message">{{error}}</label>
+        </div>
+    </form>
+{% endblock %}

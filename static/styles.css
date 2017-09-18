@@ -1,0 +1,295 @@
+/*
+    input font = Nova Mono
+    label font = Abel
+    Category Background = #CAEBF2 / efefef
+    Nav Backgroundd = #a9a9a9 / ff3b3f
+    Other Colours = #96588F and 9099A2 / 565656 and d7cec7
+    Breakpoints = 900
+*/
+
+/* Box layout */
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.col-10 {
+    width: 83.333%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-8 {
+    width: 66.666%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-5 {
+    width: 41.666%;
+}
+
+.col-4 {
+    width: 33.333%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-2 {
+    width: 16.666%;
+}
+
+.col-1 {
+    width: 8.333%;
+}
+
+/* fonts */
+body {
+    font-family: 'Abel', sans-serif;
+}
+
+button, input, select {
+    font-family: 'Nova Mono', monospace;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.inputtitle {
+    font-size: 18px;
+    color: #ff3b3f;
+    margin: 10px 0;
+}
+
+/* Navigation Styles Mobile */
+.navbar {
+    background-color: #ff3b3f;
+    color: #efefef;
+    border-radius: 2px;
+    padding: 5px;
+    width: calc(100% - 10px);
+}
+
+.navbutton {
+    background-color: #efefef;
+    color: #ff3b3f;
+    width: 100%;
+    font-size: 14px;
+    height: 75px;
+    margin: auto;
+}
+
+/* flashing and actions - all screen sizes */
+.message {
+    color: #ff3b3f;
+    padding: 0 0 0 10px;
+}
+
+.actionlink {
+    cursor: pointer;
+    color: #ff3b3f;
+    padding: 5px;
+}
+
+.headline {
+    color: #ff3b3f;
+}
+
+/* item styles */
+.items {
+    width: 100%;
+}
+
+.loginbox {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.itemimg {
+    display: none;
+}
+
+.itemtitle {
+    font-size: 28px;
+    cursor: pointer;
+    color: #ff3b3f;
+}
+
+.itemdescription {
+    font-size: 18px;
+    color: #a9a9a9;
+}
+
+.itemsubtitle {
+    font-size: 12px;
+}
+
+.categories {
+    display: none;
+}
+
+.cattitle {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .navbutton {
+        font-size: 18px;
+    }
+
+    .loginbox {
+        width: 50%;
+    }
+
+    .items {
+        width: 75%;
+    }
+
+    .itemimg {
+        height: 100px;
+        width: 100px;
+        display: inline;
+        margin: 0 5px 0 0;
+    }
+
+    .itemtitle {
+        font-size: 32px;
+    }
+
+    .itemdescription {
+        font-size: 24px;
+        color: #a9a9a9;
+    }
+
+    .categories {
+        width: 25%;
+        display: inline;
+    }
+
+    .cattitle {
+        font-size: 28px;
+        cursor: pointer;
+        color: #ff3b3f;
+        display: inline;
+    }
+
+}
+
+/*
+
+.categories {
+    width: 16.666%;
+    margin: 0 20px;
+}
+
+.items {
+    width: 75%;
+    margin: 0 20px;
+}
+
+.info-entry {
+    margin: 5px 5px;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+/* nav styles */
+/*.nav-button {
+    height:18px;
+    width: 100%;
+    background-color: #cc99ff;
+    color: white;
+}
+
+.navstyle {
+    align-items: center;
+    font-size: 16px;
+    min-height: 24px;
+    margin: 0;
+    padding: 5px 5px;
+    border-style: groove;
+    border-color: #ffffff;
+    border-radius: 5px;
+    width: calc(100% - 13px);
+}
+
+body, input, button {
+    font-family: 'Abel', sans-serif;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 14px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 12px;
+}
+
+.categories {
+    width: 33.333%;
+    margin: 0 20px;
+}
+
+.items {
+    width: 33.333%;
+    margin: 0 20px;
+}
+
+.catstyle {
+    min-height: 36px;
+    margin: 0;
+    padding: 5px 5px;
+    word-wrap: break-word;
+    margin: 0;
+    padding: 5px 5px;
+    border-style: groove;
+    border-color: #ffffff;
+    border-radius: 5px;
+}
+
+.itemstyle {
+    min-height: 36px;
+    margin: 0;
+    padding: 5px 5px;
+    word-wrap: break-word;
+}
+
+.cattitle {
+    font-size: 12px;
+}
+
+.catsubtitle {
+    font-size: 10px;
+    font-style: italic;
+    display: none;
+}
+
+}
+
+/* saved styles border-style: outset;
+    border-color: #f0f0f5;
+    border-radius: 5px;
+    width: calc(100% - 13px);
+    background-image: url("hero_1200.jpg");
+    background-size: 100%;
+    */

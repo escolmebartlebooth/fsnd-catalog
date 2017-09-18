@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'navigation.html' %}
+    <form class="row" method="POST">
+        <input type="hidden" value="{{ STATE }}" name="state" />
+        <div class="row">
+            <label class="col-2 inputtitle">Category: </label>
+            <input class="col-6" type="text" name="name" placeholder="Enter Your Category">
+        </div>
+        <div class="row">
+            <input class="col-2" type="submit" name="newcategory" value="Create!">
+            <a class="col-2 actionlink" href="{{ url_for('listCategories') }}">Cancel</a>
+        </div>
+        <div class="row">
+            <label class="col-4 message">{{error}}</label>
+        </div>
+    </form>
+{% endblock %}

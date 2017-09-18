@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'navigation.html' %}
+    <div class="row">
+        <div class="row">
+            <label class="col-6 itemtitle" name="name">Category: {{category.name}}</label>
+        </div>
+        <div class="row">
+            <label class="col-6 catsubtitle" name="author">Created by: {{category.user.email}}</label>
+        </div>
+        <div class="row">
+            <label class="col-6 catsubtitle" name="created">Created on: {{category.created | fdate}}</label>
+        </div>
+        <div class="row">
+            {% if owns_category %}
+                <a class="col-3 actionlink" href="{{ url_for('categoryEdit', category_id = category.id) }}">Edit Category</a>
+                <a class="col-3 actionlink" href="{{ url_for('categoryDelete', category_id = category.id) }}">Delete Category</a>
+            {% endif %}
+            <a class="col-3 actionlink" href="{{ url_for('listCategories') }}">Back to categories</a>
+        </div>
+        <div class="row">
+            <h2 class="col-12">Items</h2>
+        </div>
+        <div class="row">
+            <div class="row">
+            {% for item in items %}
+                <a class="col-4 itemtitle" href="{{ url_for('itemView', item_id=item.id) }}">{{item.name}}</a>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

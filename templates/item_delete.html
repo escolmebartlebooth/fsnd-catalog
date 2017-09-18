@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'navigation.html' %}
+    <form class="row" method="POST">
+        <input type="hidden" value="{{ STATE }}" name="state" />
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <label class="col-12 itemtitle">Item: {{item.name}}</label>
+                </div>
+                <div class="row">
+                    <label class="col-12 itemdescription">Description: {{item.description}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-6 itemsubtitle" type="text">Created by: {{item.user.name}}</label>
+        </div>
+        <div class="row">
+            <label class="col-6 itemsubtitle" type="text">Created on: {{item.created | fdate}}</label>
+        </div>
+        <div class="row">
+            <label class="col-6 itemsubtitle" type="text">Updated on: {{item.updated | fdate}}</label>
+        </div>
+        <div class="row">
+            <label class="col-6 itemsubtitle" type="text">In category: {{item.category.name}}</label>
+        </div>
+        <div class="row">
+            <input class="col-2" type="submit" name="newcategory" value="Delete!">
+            <a class="col-2 actionlink" href="{{ url_for('listCategories') }}">Cancel</a>
+        </div>
+    </form>
+{% endblock %}
