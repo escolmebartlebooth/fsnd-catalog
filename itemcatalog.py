@@ -38,7 +38,10 @@ import StringIO
 app = Flask(__name__)
 
 # database configuration
-dbstring = 'postgresql://catalog:catalog@localhost:5432/catalog'
+try:
+  dbstring = app.config['DBSTRING']
+except KeyError:
+  dbstring = 'postgresql://catalog:catalog@localhost:5432/catalog'
 engine = create_engine(dbstring)
 
 Base.metadata.bind = engine
@@ -47,12 +50,17 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # oauth credential loading
+try:
+  SECRETSPATH = app.config['SECRETSPATH']
+except KeyError:
+  SECRETSPATH = ''
+
 GCLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
+    open(SECRETSPATH+'client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Restaurant Menu Application"
 
 ACLIENT_ID = json.loads(
-    open('amazon_secrets.json', 'r').read())['web']['client_id']
+    open(SECRETSPATH+'amazon_secrets.json', 'r').read())['web']['client_id']
 
 # database functions
 def showCategories():
@@ -542,7 +550,7 @@ def gconnect():
 
     try:
         # Upgrade the authorization code into a credentials object
-        oauth_flow = flow_from_clientsecrets('client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets(SECRETSPATH+'client_secrets.json', scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
@@ -675,6 +683,9 @@ def categoriesJSON():
 
 # run the application
 if __name__ == '__main__':
+    # configuration
+    app.config['DBSTRING'] = 'postgresql://catalog:catalog@localhost:5432/catalog'
+    app.config['SECRETSPATH'] = ''
     app.secret_key = 'super_key'
     app.debug = False
     app.run(host='0.0.0.0', port=5000)
